@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串函数</title>
+</head>
+<body>
+<script>
+    let str3 = "abcdefg"
+    //复制字符串 三次
+    console.log(str3.repeat(3))
+    // 方法用另一个字符串填充当前字符串(如果需要的话，会重复多次)，以便产生的字符串达到给定的长度。从当前字符串的左侧开始填充。
+    console.log(str3.padStart(10,'y'))
+    let str2 = "Hello + world + hello + beijing + hello + Es6"
+    // 可从已有的数组中返回选定的元素。
+    console.log(str2.slice(1,4))
+    //split 通过分离字符串将字符串对象分割成数组
+    //join 法用于把数组中的所有元素放入一个字符串元素是通过指定的分隔符进行分隔的。
+    console.log(str2.split("+").join('#'))
+    let str1 = "hello worldj"
+    //检测 字符 返回布尔值 true 为真 false 未假
+    console.log(str1.includes("wor"))
+    //返回类型
+    console.log(typeof  str1)
+    //字符串长度
+    let length = str1.length
+    console.log('length',length)
+    //返回给定字符串的位置  没有则返回-1
+    console.log(str1.indexOf('hel'))
+    //charAt 给指定位置返回字符
+    console.log(str1.charAt(9))
+</script>
+</body>
+</html>
