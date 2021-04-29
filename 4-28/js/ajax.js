@@ -1,5 +1,4 @@
 function  Ajax(param) {
-   console.log(param)
 //    实例化 XHR
     var xhr = new XMLHttpRequest()
 //    检测 readyState 状态
