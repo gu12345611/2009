@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    // str = "hello"
+    // var str;
+    // console.log(str)
+    //
+    // say()
+    // function  say() {
+    //     console.log("Hello")
+    // }
+    //
+    // var fun = function () {
+    //      console.log(1)
+    // }
+    // function fun() {
+    //    console.log(2)
+    // }
+    // fun()
+    //
+    // // (function () {
+    // //
+    // // }())
+    // //
+    // // (function () {
+    // //
+    // // }())
+    //
+    // function Foo() {}
+    //     var f1 = new Foo();
+    //  console.log(f1 instanceof Foo)
+    //
+    // var obj = {name:'fuuf',age:19}
+    // console.log(obj.name)
+    // console.log(obj['name'])
+    //
+    // function  func(n,o) {
+    //       console.log(o)
+    //     return{
+    //           func:function (m) {
+    //              return func(m,n)
+    //           }
+    //     }
+    // }
+    // var a= func(0);
+    //  a.func(1)
+    //  a.func(2)
+    //  a.func(3)
+    // console.log(a)
+    //
+    // var a = {"x":0}
+    // var b = a
+    // a.x = 1
+    // console.log(b.x)
+
+    // function person(){
+    //     var age = 18;
+    //     function cat(){
+    //         age++;
+    //         console.log(age);
+    //     }
+    //     return cat;
+    // }
+    //   var per = person();
+    //  per()
+    //  per()
+    //  per()
+
+
+    // function Person (name) {
+    //     this.name = name;
+    // };
+    //
+    // Person.prototype.getName = function () {    //对原型进行扩展
+    //     return this.name;
+    // };
+    //
+    // function Parent (age) {
+    //     this.age = age;
+    // };
+    //
+    // Parent.prototype = new Person();   //这一句是关键 //通过构造器函数创建出一个新对象，把老对象的东西都拿过来。
+    //
+    // Parent.prototype.getAge = function () {
+    //     return this.age;
+    // };
+    //
+    // //        Parent.prototype.getName = function () {   //可以重写从父类继承来的方法,会优先调用自己的。
+    // //            console.log(222);
+    // //        };
+    //
+    // var result = new Parent(22);
+    // console.log(result.getName());  //riemann　　//调用了从Person原型中继承来的方法(继承到了当前对象的原型中)　　
+    // console.log(result.getAge());   //26 　　//
+
+<!--    function  Person(name) {-->
+<!--           this.name = name;-->
+<!--           this.friends = ['andy','edgar'];-->
+<!--    }-->
+
+<!--    Person.prototype.getName = function () {-->
+<!--        return this.name;-->
+<!--    };-->
+<!--    function  Patent(age) {-->
+<!--      Person.call(this,"riemann");;-->
+<!--     this.age = age;-->
+<!--    }-->
+<!--    (function () {-->
+<!--          var Super = function () {-->
+<!--                Super.prototype = Person.prototype;-->
+<!--                parent.prototype = new Super();-->
+<!--          }-->
+<!--    })();-->
+<!--    var result = new Patent(26);-->
+<!--    console.log(result.name);-->
+<!--    console.log(result.friends)-->
+// <!--    // console.log(result.getName());-->
+// <!--    console.log(result.age)-->
+
+
+    // function Person(name) {
+    //     this.name = name;
+    //     this.friends = ['andy','edgar'];
+    // }
+    //
+    // Person.prototype.getName = function () {
+    //     return this.name;
+    // };
+    //
+    // function Parent(age) {
+    //     Person.call(this,"riemann");
+    //     this.age = age;
+    // }
+    //
+    // (function () {
+    //     var Super = function () {};     // 创建一个没有实例方法的类
+    //     Super.prototype = Person.prototype;
+    //     Parent.prototype = new Super();     //将实例作为子类的原型
+    // })();
+    //
+    // var result = new Parent(26);
+    // // console.log(result.name);
+    // // console.log(result.friends);
+    // console.log(result.getName());
+    // // console.log(result.age);
+    // function  person() {
+    //
+    // }
+    // var per = person();
+    // console.log(per)
+
+    // function  Person(name,age,gender) {
+    // this.name = name;
+    // this.age = age;
+    // this.gender = gender;
+    // }
+    // var per = new Person("张三",80,"女")
+    // console.log(per)
+    // console.log(per.name);
+    // console.log(per.age)
+    // console.log(per instanceof Person)
+    //对象构造函数
+
+    // function  employee(name,jop,born) {
+    //      this.name = name;
+    //      this.jop = jop;
+    //      this.born = born;
+    // }
+    // var bill  = new employee("Bill Gates","Engineer",1985);
+    //  console.log(bill)
+    //    employee.prototype.salaty = null;
+    //    bill.salaty=20000;
+    //    document.write(bill.salaty)
+    // var arr = [1,2,5,6,4,8,9,7,8,9,,97,8,79,7,97,9,98,7,89,857,8,857,8,57]
+    // arr.forEach(function (e,k) {
+    //     console.log(e)
+    //     // console.log(k)
+    // })
+//
+//     function  person1() {
+//
+//     }
+//     person1.prototype.name = "user_name"
+//     person1.prototype.sex ="男"
+//     person1.prototype.age = 90
+//     person1.prototype.say = function () {
+//       console.log("Hello World")
+//     }
+//     var p1 = new person1()
+//     console.log(p1.name)
+//     console.log(p1.sex)
+//     console.log(p1.age)
+//      p1.say()
+    class person2{
+          constructor(name,age,sex) {
+           this.name = name
+           this.age = age
+           this.sex = sex
+          }
+      say(){
+              console.log(this.name + "正在复活")
+      }
+      static cry(){
+              console.log("风很大")
+      }
+      get name(){
+              console.log("访问name属性")
+      }
+      set name(v){
+              console.log("修改了name属性的值："+v)
+      }
+}
+
+class Asian extends  person2{
+    constructor(name,age,sex) {
+        super(name,age,sex)
+    }
+    static  color = "yellow"
+    sleep_(){
+        console.log("正在睡觉")
+    }
+}
+let p1 = new Asian("地下铁","里的风","吹的比回忆严重")
+console.log(p1)
+    p1.say()
+// console.log(person2.location)
+
+//     let p2 = new person2("汪汪",19,'不明')
+    // p1.name
+    // p1.name = "wangwa"
+    // let  p3 = new person2("lisi",0,'f')
+    // console.log(p1)
+    // console.log(p2)
+    // console.log(p3)
+    // p2.say()
+    // p3.say()
+
+</script>
+</body>
+</html>
