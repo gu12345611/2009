@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Object.prototype[Symbol.iterator] = function () {
+      const  keys = Object.keys(this);
+      let index = 0;
+      return{
+          next:()=>{
+              return{
+                  value:[keys[index],this[keys[index++]]],
+                  done: index > keys.length
+              }
+          }
+      }
+    }
+    var  obj = {a:'hello',b:'world',c:'hello world'}
+    for (let [key,value] of obj){
+        console.log(key,value)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var someString = "hi"
+    typeof  someString[Symbol.iterator]
+    var iterator = someString[Symbol.iterator]();
+    console.log(someString[Symbol.iterator]())
+    iterator.next()
+    iterator.next()
+    console.log(iterator.next())
+</script>
+</body>
+</html>

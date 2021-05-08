@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Set 和 Map 结构也原生具有 Iterator 接口，可以直接使用for...of循环。
+  var engines = new Set(["Gecko","Trident","Webkit","Webkit"])
+  for (var e of engines){
+      console.log(e)
+    }
+    var es6 = new Map();
+    es6.set("edition",6)
+    es6.set("committee","TC39")
+   es6.set("standard","ECMA-262")
+   for (var [name,value] of es6){
+        console.log(name+":"+value)
+    }
+    // var name = 'cat';
+    // var obj = {
+    //     name:'dog',
+    //     getName:function () {
+    //       this.name = 'mouse';
+    //        return(function () {
+    //           return this.name
+    //        })()
+    //     }
+    // }
+    // console.log(obj.getName())
+
+    // var add = (function () {
+    //    return function () {
+    //        var  counter = 0;
+    //        return(counter +=1)
+    //    };
+    // })()
+    // add()
+    // add()
+    // console.log(add())
+    // console.log(a)
+    // a = 'hello'
+    // function  fn() {
+    //         console.log(a)
+    //     a = 12
+    // }
+    // fn()
+    // console.log(a)
+    //  function  getFunc() {
+    //    var a = 7
+    //      return function (b) {
+    //           alert(a+b)
+    //      }
+    //  }
+    //  var  f = getFunc();
+    //  f(5)
+    // var animal = "dog"
+    // function  sayAnimal() {
+    //     animal = "cat"
+    //     function animal() {}
+    //       console.log(animal.toString())
+    // }
+    //   sayAnimal()
+    // var fun = function () {
+    //    console.log(1)
+    // }
+    // function  fun() {
+    //  console.log(2)
+    // }
+    // fun()
+    // function  Person() {
+    //   this.age= 20
+    // }
+    // Person.prototype.age = 30
+    // Person.prototype.getAge = function () {
+    //    return this.age
+    // }
+    // var  p = new Person()
+    // console.log(p.getAge())
+    //
+    // function  func(n,o) {
+    // console.log(o)
+    //     return{
+    //     func:function (m) {
+    //       return func(m,n)
+    //     }
+    // };
+    // }
+    // var  a = func(0); a.func(1); a.func(2);a.func(3)
+    // console.log(a)
+    //
+    // (function f(num) {
+    //    console.log(num)
+    // })(111)
+
+    // var a = {"x":0}
+    // var b = a
+    // a.x = 1
+    // console.log(b.x)
+
+   //  function  a() {
+   //       var i = 0
+   //      function  b() {
+   //       i++
+   //          console.log(i)
+   //      }
+   //      return b
+   //  }
+   // var c= a()
+   //  c()
+   //  c()
+   //  c()
+
+    // function  fun(a,b,...args) {
+    //     console.log(args)
+    // }
+    // fun(11,22,33,44)
+
+    // function  test() {
+    //      b()
+    //     var a =1
+    //     function b() {
+    //       console.log(1)
+    //         console.log(a)
+    //         var a= 2
+    //     }
+    // }
+    // test()
+
+    //   var b;
+  // function  fun() {
+  //  b = "change"
+  // }
+  // console.log(b)
+  //   fun()
+  //   console.log(b)
+
+    // function  FOO() {
+    //     console.log(a)
+    //     var a ='hello'
+    //     console.log(a)
+    // }
+    // FOO()
+<!--    say();-->
+<!--   function say() {-->
+<!--      console.log('Hello')-->
+<!--   }-->
+
+    // if (!("a" in window)){
+    //     var  a =12
+    // }
+    // console.log(a)
+
+    // (function () {
+    //      var a = 10
+    //     if (a >5){
+    //         a = 7
+    //     }
+    //     alert(a)
+    // })()
+
+    // (function(){
+    //    return typeof  arguments
+    // })()
+
+    // let a = 111
+    // function f(a) {
+    //     console.log(a)
+    //     a = 222
+    //     console.log(a)
+    // }
+    // a = 333
+    // console.log(a)
+    // f(a)
+
+    //  var arr =[11,22,33,44]
+    // function  f(...args) {
+    //   console.log(args)
+    // }
+    // f(...arr)
+ //
+ //    var name = 'cat';
+ // var obj = {
+ //     name:'dog',
+ //     getName:function () {
+ //         this.name ='mouse';
+ //             return (function () {
+ //             return this.name
+ //             })();
+ //     }
+ //
+ // }
+ // console.log(obj.name)
+ //  var   Person = {
+ //
+ //    }
+ //    console.log(Person.prototype )
+
+</script>
+</body>
+</html>
