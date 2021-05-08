@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const  obj1 = {
+        name :"zhangsna",
+        age:11
+    }
+    const  p1 = new Proxy(obj1,{
+        get(target, property) {
+            console.log(target)
+            console.log(property)
+            if (property in target){
+                console.log(`${property}属性存在`)
+            }else{
+                console.log(`${property}属性不存在`)
+            }
+        },
+        set(target, p, value, receiver) {
+
+            },
+
+        defineProperty: function(target, key, descriptor) {
+         console.log("禁止使用defineProperty方法")
+           return true
+        },
+        deleteProperty(target, p) {
+         console.log(`禁止删除${p}属性`)
+            return false
+        }
+    })
+    delete  p1.name
+    Object.defineProperty(p1,"xxx",{
+        value: "abcde"
+    })
+    console.log(p1)
+</script>
+</body>
+</html>

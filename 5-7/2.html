@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let  person = {
+        name:"zhangsan",
+        age:22
+    }
+    Object.defineProperty(person,"sex",{
+       value :"Male"
+    })
+    for (k in person){
+        console.log(person)
+    }
+    console.log(Object.keys(person))
+
+    let obj = {
+        name:"lisi",
+        age: 22
+    }
+    Object.defineProperty(obj,"sex",{
+        value: "Male"
+    })
+    console.log("name" in obj)
+    console.log("email" in obj)
+</script>
+</body>
+</html>
