@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组遍历</title>
+</head>
+<body>
+<script>
+    // 数组添加遍历器 iterator接口
+    const  arr = [11,22,33,44]
+//    获取数组的 iteratot对象
+    let it1 = arr[Symbol.iterator]()
+    for (let v of it1){
+        console.log(v)
+    }
+
+</script>
+</body>
+</html>

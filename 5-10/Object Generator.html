@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象生成器</title>
+</head>
+<body>
+<script>
+    function * f() {
+        for (let k in this){
+            yield this[k]
+        }
+    }
+    //    把生成器函数绑定到Object的原型上 （任意对象都可使用for of 操作）
+    Object.prototype[Symbol.iterator] = f
+    const  obj = {
+        name:"zhangsan",
+        age:11,
+        sex : 'Male'
+    }
+    const obj1 = {
+        name:"lisi",
+        age:50,
+        sex : 'Male',
+        email : 'Male@qq.com'
+    }
+    for (let v of obj1){
+        console.log(v)
+    }
+</script>
+</body>
+</html>
