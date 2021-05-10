@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../jquery-3.6.0.min.js"></script>
+<body>
+<script>
+       var   css = " "
+       $.ajax({
+           async:false,
+           type:'get',
+           url:'http://vue.api.comcto.com/api/password1.php\n',
+           success:function (reg) {
+               console.log("服务器返回的值",reg)
+               css+=reg
+           }
+       })
+       console.log(css)
+   $.ajax({
+        type:'get',
+        async:false,
+        url:'http://vue.api.comcto.com/api/password2.php\n',
+        success:function (reg) {
+            console.log("服务器返回的值",reg)
+            css+=reg
+        },
+    })
+ $.ajax({
+        async:false,
+        type:'get',
+        url:'http://vue.api.comcto.com/api/password3.php\n',
+        success:function (reg) {
+            console.log("服务器返回的值",reg)
+            css+=reg
+        }
+    })
+  $.ajax({
+        async:false,
+        type:'get',
+        url:'http://vue.api.comcto.com/api/password4.php\n',
+       success:function (reg) {
+           console.log("服务器返回的值",reg)
+           css+=reg
+       }
+    })
+    console.log(css)
+</script>
+</body>
+</html>
