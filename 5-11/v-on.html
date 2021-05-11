@@ -8,17 +8,18 @@
 <body>
 <div id="add">
     <button v-on:click="hello">AAA</button>
-<!--  v-on简写 @也可以绑定事件  -->
+      <!--  v-on简写 @也可以绑定事件  -->
     <button @click="hello1">BB</button>
+</div>
+<div id="aa">
+    {{mag}}
 </div>
 </body>
 </html>
 <script>
     var add = new Vue({
         el:'#add',
-        data:{
-
-        },
+        data:{},
         //vue处理事件函数methods
         methods:{
          hello:function () {
@@ -27,7 +28,13 @@
          //   简写
          hello1(){
              alert(5555)
-         }
+          }
         }
-    })
+     })
+    var aa = new Vue({
+         el:"#aa",
+        data:{
+           mag:'hello wold'
+        }
+      })
 </script>

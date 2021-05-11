@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>图书列表</title>
+  <script src="../vue.js"></script>
   <style>
     .grid {
       margin: auto;
@@ -49,6 +50,7 @@
           </div>
         </div>
       </div>
+      <div>
       <table>
         <thead>
           <tr>
@@ -59,20 +61,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1001</td>
-            <td>西游记</td>
-            <td>2021-5-11</td>
-            <td>
-              <a href="">修改</a>
-              <span>|</span>
-              <a href="">删除</a>
-            </td>
-          </tr>
-          <tr>
-            <td>1002</td>
-            <td>水壶传</td>
-            <td>2021-5-11</td>
+          <tr  v-for="item in list">
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.time}}</td>
             <td>
               <a href="">修改</a>
               <span>|</span>
@@ -81,7 +73,24 @@
           </tr>
         </tbody>
       </table>
+<!--        <ul>-->
+<!--          <li v-for="item in list">{{item.name}}-{{item.age}}-{{item.time}}</li>-->
+<!--        </ul>-->
     </div>
+  </div>
   </div>
 </body>
 </html>
+<script>
+  var app = new Vue({
+    el:'#app',
+    data:{
+      list:[
+        {name:'3306',age:'西游记',time:'2021-5-11'},
+        {name:'3307',age:'海绵宝宝',time:'2021-5-11'},
+        {name:'3308',age:'红楼梦',time:'2021-5-11'},
+        {name:'3309',age:'魔道祖师',time:'2021-5-11'}
+      ]
+    }
+  })
+</script>
