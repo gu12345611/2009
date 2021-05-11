@@ -10,10 +10,22 @@
     const  arr = [11,22,33,44]
 //    获取数组的 iteratot对象
     let it1 = arr[Symbol.iterator]()
-    for (let v of it1){
+    console.log(it1.next())
+    for (let v of it1) {
         console.log(v)
     }
-
+    // for (let c in arr){
+    //     console.log(c)
+    // }
+    let obj = {
+        a:1
+    }
+    Object.defineProperty(obj,'a',{
+         value:5
+    })
+    console.log(  Object.defineProperty(obj,'a',{
+        value:5
+    }))
 </script>
 </body>
 </html>

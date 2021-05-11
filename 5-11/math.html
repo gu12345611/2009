@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../vue.js"></script>
+<body>
+<div class="vm">
+    {{msg}}
+    <p>Using Mustaches:{{rawHtml}}</p>
+    <p v-html="rawHtml"></p>
+    <div v-bind:class="color">text...</div>
+</div>
+
+</body>
+</html>
+<script>
+   var vm = new Vue({
+       el:'.vm',
+       data :{
+               msg: "hello wold",
+               rawHtml:'<span style="color: red">红色</span>',
+              color:'red',
+       }
+   })
+   vm.msg = "hi..."
+</script>
+<style>
+    .red{color: chartreuse}
+</style>

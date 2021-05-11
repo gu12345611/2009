@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue绑定事件</title>
+</head>
+<script src="../vue.js"></script>
+<body>
+<div id="add">
+    <button v-on:click="hello">AAA</button>
+<!--  v-on简写 @也可以绑定事件  -->
+    <button @click="hello1">BB</button>
+</div>
+</body>
+</html>
+<script>
+    var add = new Vue({
+        el:'#add',
+        data:{
+
+        },
+        //vue处理事件函数methods
+        methods:{
+         hello:function () {
+              alert(555)
+         },
+         //   简写
+         hello1(){
+             alert(5555)
+         }
+        }
+    })
+</script>
