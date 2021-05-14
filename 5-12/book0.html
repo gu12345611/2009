@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图书列表</title>
+    <script src="../vue.js"></script>
+    <script src="../axios.mim.js"></script>
+    <style>
+        .grid {
+            margin: auto;
+            width: 530px;
+            text-align: center;
+        }
+        .grid table {
+            border-top: 1px solid #C2D89A;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .grid th,td {
+            padding: 10;
+            border: 1px dashed #F3DCAB;
+            height: 35px;
+            line-height: 35px;
+        }
+        .grid th {
+            background-color: #F3DCAB;
+        }
+        .grid .book {
+            padding-bottom: 10px;
+            padding-top: 5px;
+            background-color: #F3DCAB;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="grid">
+        <div>
+            <h1>用户管理</h1>
+            <div class="book">
+                <div>
+                    <label for="id">
+                        UID：
+                    </label>
+                    <input type="text" id="id" v-model="userid" v-bind:disabled="status">
+                    <label for="name">
+                        用户名：
+                    </label>
+                    <input type="text" id="name"  v-model="username">
+                    <button v-on:click="btn" >提交</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>UID</th>
+                    <th>用户密码</th>
+                    <th>EMAIL</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  v-for="(item,k) in list" :key="item.user_id">
+                    <td>{{item.user_id}}</td>
+                    <td>{{item.user_name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>
+                        <a href="" @click.prevent="onsubmit(item,k)">修改</a>
+                        <span>|</span>
+                        <a  href="" @click.prevent="hello(k)">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            status:false,
+            userid:null,
+            username:null,
+            list:[],
+        },
+        methods: {
+            hello(i) {
+                let self = this;
+                let uid = this.list[i].user_id
+                axios.delete('http://localhost:3000/user/del?uid='+uid).then(function (res) {
+                      self.list.splice(i,1)
+               })
+            },
+            btn(k) {
+                let self = this
+                if (this.status) {
+                    let user_id = this.userid;
+                    let user_name = this.username;
+                    axios.put('http://localhost:3000/user/update',{user_id,user_name}).then(function (res) {
+                        self.list.forEach(function (i, v) {
+                            if (i.user_id == user_id) {
+                                console.log(i)
+                                console.log(i.user_name = user_name)
+                            }
+                        })
+                    })
+
+                    this.userid = null
+                    this.username = null
+                    this.status = false
+                } else {
+                    //  this.list.forEach(function (i, v) {
+                    //     if (i.user_id == userid){
+                    //          alert("编号已存在")
+                    //          return false;
+                    //    }
+                    // })
+                    if(this.username == null){
+                        alert("书名不能为空")
+                        return false;
+                    }
+                    let user_info = {
+                        user_id:this.userid,
+                        user_name:this.username
+                    }
+                    console.log("用户消息",user_info)
+                    axios.post('http://localhost:3000/user/add',user_info).then(function (res) {
+                          console.log("服务器返回的消息",res.data)
+                          self.list.unshift(user_info)
+                          self.userid = "";
+                          self.username = "";
+                    })
+
+                    //vue时间串
+                    // var aData = new Date();
+                    // this.value =
+                    //     aData.getFullYear() + "-" + (aData.getMonth() + 1) + "-" + aData.getDate();
+                    // console.log(this.value) //2019-8-20
+                }
+            },
+                onsubmit(item,k){
+                    this.userid = this.list[k].user_id
+                    this.username = this.list[k].user_name
+                    this.status = true
+                }
+            },
+            created() {
+                let self = this
+                let api_url = "http://localhost:3000/user/list"
+                axios.get(api_url).then(function (res) {
+                    self.list = res.data
+                })
+
+            }
+
+    })
+</script>

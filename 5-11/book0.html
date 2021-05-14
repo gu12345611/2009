@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>图书列表</title>
   <script src="../vue.js"></script>
+  <script src="../axios.mim.js"></script>
   <style>
     .grid {
       margin: auto;
@@ -41,12 +42,12 @@
             <label for="id">
               编号：
             </label>
-            <input type="text" id="id">
+            <input type="text" id="id" v-model="bookid" v-bind:disabled="status">
             <label for="name">
               名称：
             </label>
-            <input type="text" id="name">
-            <button >提交</button>
+            <input type="text" id="name"  v-model="bookname">
+            <button v-on:click="btn" >提交</button>
           </div>
         </div>
       </div>
@@ -61,21 +62,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr  v-for="item in list">
+          <tr  v-for="(item,k) in list" :key="item.id">
+            <td>{{item.id}}</td>
             <td>{{item.name}}</td>
-            <td>{{item.age}}</td>
             <td>{{item.time}}</td>
             <td>
-              <a href="">修改</a>
+              <a href="" @click.prevent="onsubmit(item,k)">修改</a>
               <span>|</span>
-              <a href="">删除</a>
+              <a  href="" @click.prevent="hello(k)">删除</a>
             </td>
           </tr>
         </tbody>
       </table>
-<!--        <ul>-->
-<!--          <li v-for="item in list">{{item.name}}-{{item.age}}-{{item.time}}</li>-->
-<!--        </ul>-->
     </div>
   </div>
   </div>
@@ -85,12 +83,67 @@
   var app = new Vue({
     el:'#app',
     data:{
-      list:[
-        {name:'3306',age:'西游记',time:'2021-5-11'},
-        {name:'3307',age:'海绵宝宝',time:'2021-5-11'},
-        {name:'3308',age:'红楼梦',time:'2021-5-11'},
-        {name:'3309',age:'魔道祖师',time:'2021-5-11'}
-      ]
+      status:false,
+      bookid:null,
+      bookname:null,
+      list:[],
+    },
+    methods:{
+     hello(i){
+        this.list.splice(i,1)
+     },
+     btn(k) {
+       if (this.status) {
+         let id = this.bookid;
+         let name = this.bookname
+         this.list.forEach(function (i, v) {
+           if (i.id == id) {
+             console.log(i)
+             i.name = name
+           }
+         })
+         this.bookid = null
+         this.bookname = null
+         this.status = false
+       } else{
+         let id = this.bookid
+         this.list.forEach(function (i, v) {
+           if (i.id == id){
+               alert("编号已存在")
+               return false;
+           }
+         })
+           if(this.bookname == null){
+             alert("书名不能为空")
+             return false;
+           }
+         var aData = new Date();
+         this.value =
+                 aData.getFullYear() + "-" + (aData.getMonth() + 1) + "-" + aData.getDate();
+         console.log(this.value) //2019-8-20
+         let _obj = {
+           id: this.bookid,
+           name: this.bookname,
+           time: this.value
+         }
+         this.list.push(_obj)
+         this.bookid="";
+         this.bookname="";
+       }
+     },
+      onsubmit(item,k){
+        this.bookname = this.list[k].name
+        this.bookid = this.list[k].id
+        this.status = true
+      }
+    },
+    created(){
+      let _this = this
+      let api_url = " http://vue.api.comcto.com/api/books.php\n"
+      axios.get(api_url).then(function (d) {
+        console.log(d)
+          _this.list = d.data
+      })
     }
   })
 </script>
